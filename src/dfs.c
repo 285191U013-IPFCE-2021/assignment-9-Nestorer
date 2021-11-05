@@ -24,20 +24,16 @@ void DFT(node *root)
     printf("%d\n", popped_stack->node->num);
 
     if (popped_stack->node->rchild != NULL)
-    {
       push(&LL, popped_stack->node->rchild);
-    }
     if (popped_stack->node->lchild != NULL)
-    {
       push(&LL, popped_stack->node->lchild);
-    }
   }
 }
 
 // Checking if the stack is empty (bool). Empty when it topp doesn't point to a stack.
 bool isEmpty(stack *topp)
 {
-  return (topp == NULL);
+  return (!topp);
 }
 
 // Pushing a node onto the stack
@@ -56,7 +52,7 @@ void push(stack **topp, node *node)
   else
   {
     stack *tmp = top;
-    while (tmp->next != NULL)
+    while (tmp->next)
       tmp = tmp->next;
     tmp->next = new;
   }
@@ -67,7 +63,7 @@ stack *pop(stack **topp)
 {
   stack *top = *topp;
   stack *tmp = top;
-  if (tmp->next == NULL)
+  if (!tmp->next) // if only 1 element
   {
     *topp = NULL;
     return tmp;
@@ -75,7 +71,7 @@ stack *pop(stack **topp)
   else
   {
     stack *prev = top;
-    while (tmp->next != NULL)
+    while (tmp->next) // tmp points to last stack after loop.
     {
       prev = tmp;
       tmp = tmp->next;
