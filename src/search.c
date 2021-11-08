@@ -3,12 +3,10 @@
 
 bool search(int a[], int n, int x)
 {
-    // n<0 will never happen since it is length of array
-
-    if (!n)
+    if (n == 0)
         return false;
-    else if (a[n - 1] != x)
+    else if (n > 0 && a[n - 1] != x)
         return search(a, n - 1, x);
-    else
+    else if (n > 0 && a[n - 1] == x)
         return true;
 }
