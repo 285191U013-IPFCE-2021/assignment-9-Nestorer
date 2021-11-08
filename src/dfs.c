@@ -27,6 +27,8 @@ void DFT(node *root)
       push(&LL, popped_stack->node->rchild);
     if (popped_stack->node->lchild != NULL)
       push(&LL, popped_stack->node->lchild);
+
+    free(popped_stack);
   }
 }
 
